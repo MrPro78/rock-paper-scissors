@@ -1,48 +1,43 @@
+let playerScore = 0; 
+let computerScore = 0; 
+let tieScore = 0;
+
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissors"]; 
     let randomise_group = choices; 
     return randomise_group[Math.floor(Math.random() * randomise_group.length)];
 }
 
-let playerScore = 0; 
-let computerScore = 0; 
-let tieScore = 0; 
-
-
 
 function playRound(playerSelection, computerSelection) {
 
+    //calling computerchoice function/// 
     computerSelection = getComputerChoice(); 
-
-    // toLowerCase() function converst all inputs to lowercase, this is to ensure case insensitivity// 
+    winner = "";
 
    if(playerSelection === computerSelection) {
-    return "Its a tie!" + tieScore++; 
+    winner = "Its a tie!"; 
    } else if(
     (playerSelection === "rock" && computerSelection === "scissors") || 
     (playerSelection === "paper" && computerSelection === "rock") ||
     (playerSelection === "scissors" && computerSelection === "paper")
    ){
-    return "Player wins!" +  playerScore++;
+    winner = "Player wins!";
    
    } else {
-    return "Computer wins!" + computerScore++;
+    winner = "Computer wins!";
    }
+
+   return console.log(winner); 
 }
 
-function game() {
-    round = playRound(); 
-     
+function game() {     
     for(i=0; i < 5; i++){
-        let player_input = prompt("what gesture do you choose?:").toLowerCase();  
-
-        if(playerScore > computerScore){
-            return "Player wins with a score of" + playerScore; 
-        } else if (computerScore > playerScore) {
-            return "Computer wins with a score of" + computerScore; 
-        } else if ( playerScore === computerScore) {
-            return "Tie with a score of" + tieScore; 
-        }
+        let playerChoice = prompt("what gesture do you choose?:").toLowerCase();  
+        let compChoice = getComputerChoice(); 
+        // toLowerCase() function converst all inputs to lowercase, this is to ensure case insensitivity//         
+        playRound(playerChoice, compChoice); 
+        
     }
 }
 
