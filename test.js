@@ -24,12 +24,12 @@ function playRound(playerSelection,computerSelection){
         (playerSelection === "scissor" && computerSelection === "rock")
     ){
         computerScore++;  
-        winner = "Computer wins!";
+        winner = "Computer wins this round!";
         
     }
     else{
         playerScore++;
-        winner = "Player Wins!"; 
+        winner = "Player Wins this round!"; 
     }
 
     console.log("Player chose: " + playerSelection); 
